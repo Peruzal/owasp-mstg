@@ -1,118 +1,171 @@
 # Testing Tools
-To perform security testing different tools are available in order to be able to manipulate requests and responses, decompile Apps, investigate the behaviour of running Apps and other test cases and automate them. 
 
-- [Mobile Application Security Testing Distributions](#mobile-application-security-testing-distributions)
-- [All-in-one Mobile Security Frameworks](#all-in-one-mobile-security-frameworks)
-- [Tools for Android](#tools-for-android)
-  - [Reverse Engineering and Static Analysis](#reverse-engineering-and-static-analysis)
-  - [Dynamic and Runtime Analysis](#dynamic-and-runtime-analysis)
-  - [Bypassing Root Detection and SSL Pinning](#bypassing-root-detection-and-ssl-pinning)
-- [Tools for iOS](#tools-for-ios)
-  - [Access Filesystem on iDevice](#access-filesystem-on-idevice)
-  - [Reverse Engineering and Static Analysis](#reverse-engineering-and-static-analysis)
-  - [Dynamic and Runtime Analysis](#dynamic-and-runtime-analysis)
-  - [Bypassing Root Detection and SSL Pinning](#bypassing-root-detection-and-ssl-pinning)
- - [Tools for Network Interception](#tools-for-network-interception)
- - [IDE](#ide)
+To perform security testing different tools are available in order to be able to manipulate requests and responses, decompile apps, investigate the behavior of running apps and other test cases and automate them.
 
-#### Mobile Application Security Testing Distributions
-* [Appie](https://manifestsecurity.com/appie) - A portable software package for Android Pentesting and an awesome alternative to existing Virtual machines.
-* [Android Tamer](https://androidtamer.com/) - Android Tamer is a Virtual / Live Platform for Android Security professionals.
-* [AppUse](https://appsec-labs.com/AppUse/) - AppUse is a VM (Virtual Machine) developed by AppSec Labs.
-* [Androl4b](https://github.com/sh4hin/Androl4b) - A Virtual Machine For Assessing Android applications, Reverse Engineering and Malware Analysis 
-* [Mobisec](http://sourceforge.net/projects/mobisec/) - Mobile security testing live environment.
-* [Santoku](https://santoku-linux.com/) - Santoku is an OS and can be run outside a VM as a standalone operating system.
-* [Vezir Project](https://github.com/oguzhantopgul/Vezir-Project) - Mobile Application Pentesting and Malware Analysis Environment.
+> The MSTG project has no preference in any of the tools below, or in promoting or selling any of the tools. All tools below have been verified if they are "alive", meaning that updates have been pushed recently. Nevertheless, not all tools have been used/tested by the authors, but they might still be useful when analyzing a mobile app. The listing is sorted in alphabetical order. The list is also pointing out commercial tools.
+> Disclaimer: At the time of writing, we ensure that the tools being used in the MSTG examples are properly working. However, the tools might be broken or not work properly depending on your OS version of both your host computer and your test device. The functioning of the tooling can be further impeded by whether you're using a rooted/jailbroken device, the specific version of the rooting/jailbreak method and/or the version of the tool. The MSTG does not take any responsibility over the working status of the tools. If you find a broken tool or example, please search or file an issue in the tool original page, e.g. in the GitHub issues page.
 
-### All-in-One Mobile Security Frameworks
-* [Mobile Security Framework - MobSF](https://github.com/ajinabraham/Mobile-Security-Framework-MobSF) - Mobile Security Framework is an intelligent, all-in-one open source mobile application (Android/iOS) automated pen-testing framework capable of performing static and dynamic analysis.
-* [Needle](https://github.com/mwrlabs/needle) - Needle is an open source, modular framework to streamline the process of conducting security assessments of iOS apps including Binary Analysis, Static Code Analysis, Runtime Manipulation using Cycript and Frida hooking, and so on.
+## Mobile Application Security Testing Distributions
 
-### Tools for Android
-#### Reverse Engineering and Static Analysis
+- Androl4b: A virtual machine for assessing Android applications, perform reverse engineering and malware analysis - <https://github.com/sh4hin/Androl4b>
+- Android Tamer: A Debian-based Virtual/Live Platform for Android Security professionals - <https://androidtamer.com/>
+- Mobile Security Toolchain: A project used to install many of the tools mentioned in this section, both for Android and iOS at a host computer running macOS. The project installs the tools via Ansible - <https://github.com/xebia/mobilehacktools>
 
-* [Androguard](https://github.com/androguard/androguard) - Androguard is a python based tool, which can use to disassemble and  decompile android apps.
-* [Android Debug Bridge - adb](https://developer.android.com/studio/command-line/adb.html) - Android Debug Bridge (adb) is a versatile command line tool that lets you communicate with an emulator instance or connected Android device.
-* [APKInspector](https://github.com/honeynet/apkinspector/) - APKinspector is a powerful GUI tool for analysts to analyze the Android applications.
-* [APKTool](http://ibotpeaches.github.io/Apktool/) - A tool for reverse engineering 3rd party, closed, binary Android apps. It can decode resources to nearly original form and rebuild them after making some modifications.
-* [Sign](https://github.com/appium/sign) - Sign.jar automatically signs an apk with the Android test certificate.
-* [Jadx](https://github.com/skylot/jadx) - Dex to Java decompiler: Command line and GUI tools for produce Java source code from Android Dex and Apk files.
-* [Oat2dex](https://github.com/testwhat/SmaliEx) - A tool for converting .oat file to .dex files.
-* [FindBugs](http://findbugs.sourceforge.net/) + [FindSecurityBugs](http://h3xstream.github.io/find-sec-bugs/) - FindSecurityBugs is a extension for FindBugs which include security rules for Java applications.
-* [Qark](https://github.com/linkedin/qark) - This tool is designed to look for several security related Android application vulnerabilities, either in source code or packaged APKs.
-* [SUPER](https://github.com/SUPERAndroidAnalyzer/super) - SUPER is a command-line application that can be used in Windows, MacOS X and Linux, that analyzes .apk files in search for vulnerabilities. It does this by decompressing APKs and applying a series of rules to detect those vulnerabilities.
-* [AndroBugs](https://github.com/AndroBugs/AndroBugs_Framework) - AndroBugs Framework is an efficient Android vulnerability scanner that helps developers or hackers find potential security vulnerabilities in Android applications. No need to install on Windows.
-* [Simplify](https://github.com/CalebFenton/simplify) - A tool for de-obfuscating android package into Classes.dex which can be use Dex2jar and JD-GUI to extract contents of dex file. 
-* [ClassNameDeobfuscator](https://github.com/HamiltonianCycle/ClassNameDeobfuscator) - Simple script to parse through the .smali files produced by apktool and extract the .source annotation lines.
-* [Android backup extractor](https://github.com/nelenkov/android-backup-extractor) - Utility to extract and repack Android backups created with adb backup (ICS+). Largely based on BackupManagerService.java from AOSP. 
- 
-#### Dynamic and Runtime Analysis
-* [Cydia Substrate](http://www.cydiasubstrate.com/) - Cydia Substrate for Android enables developers to make changes to existing software with Substrate extensions that are injected in to the target process's memory.
-* [Xposed Framework](http://forum.xda-developers.com/xposed/xposed-installer-versions-changelog-t2714053) - Xposed framework enables you to modify the system or application aspect and behaviour at runtime, without modifying any Android application package(APK) or re-flashing.
-* [logcat-color](https://github.com/marshall/logcat-color) - A colorful and highly configurable alternative to the adb logcat command from the Android SDK.
-* [Inspeckage](https://github.com/ac-pm/Inspeckage) - Inspeckage is a tool developed to offer dynamic analysis of Android applications. By applying hooks to functions of the Android API, Inspeckage will help you understand what an Android application is doing at runtime.
-* [Frida](http://www.frida.re/) - The toolkit works using a client-server model and lets you inject in to running processes not just on Android, but also on iOS, Windows and Mac.
-* [Diff-GUI](https://github.com/antojoseph/diff-gui) - A Web framework to start instrumenting with the avaliable modules, hooking on native, inject JavaScript using Frida.
-* [AndBug](https://github.com/swdunlop/AndBug) - AndBug is a debugger targeting the Android platform's Dalvik virtual machine intended for reverse engineers and developers.
-* [Cydia Substrate: Introspy-Android](https://github.com/iSECPartners/Introspy-Android) - Blackbox tool to help understand what an Android application is doing at runtime and assist in the identification of potential security issues.
-* [Drozer](https://www.mwrinfosecurity.com/products/drozer/) - Drozer allows you to search for security vulnerabilities in apps and devices by assuming the role of an app and interacting with the Dalvik VM, other apps' IPC endpoints and the underlying OS.
- 
-#### Bypassing Root Detection and SSL Pinning
-* [Xposed Module: Just Trust Me](https://github.com/Fuzion24/JustTrustMe) - Xposed Module to bypass SSL certificate pinning.
-* [Xposed Module: SSLUnpinning](https://github.com/ac-pm/SSLUnpinning_Xposed) - Android Xposed Module to bypass SSL certificate validation (Certificate Pinning).
-* [Cydia Substrate Module: Android SSL Trust Killer](https://github.com/iSECPartners/Android-SSL-TrustKiller) - Blackbox tool to bypass SSL certificate pinning for most applications running on a device.
-* [Cydia Substrate Module: RootCoak Plus](https://github.com/devadvance/rootcloakplus) - Patch root checking for commonly known indications of root.
-* [Android-ssl-bypass](https://github.com/iSECPartners/android-ssl-bypass) - an Android debugging tool that can be used for bypassing SSL, even when certificate pinning is implemented, as well as other debugging tasks. The tool runs as an interactive console.
+## All-in-One Mobile Security Frameworks
 
+- AppMon: An automated framework for monitoring and tampering system API calls of native macOS, iOS and Android apps - <https://github.com/dpnishant/appmon/>
+- Mobile Security Framework (MobSF): A mobile pentesting framework, capable of performing static and dynamic analysis - <https://github.com/ajinabraham/Mobile-Security-Framework-MobSF>
+- objection: A runtime mobile security assessment framework that does not require a jailbroken or rooted device for both iOS and Android, due to the usage of Frida - <https://github.com/sensepost/objection>
 
-### Tools for iOS
-#### Access Filesystem on iDevice
-* [FileZilla](https://filezilla-project.org/download.php?show_all=1) -  It supports FTP, SFTP, and FTPS (FTP over SSL/TLS).
-* [Cyberduck](https://cyberduck.io) - Libre FTP, SFTP, WebDAV, S3, Azure & OpenStack Swift browser for Mac and Windows.
-* [itunnel](https://code.google.com/p/iphonetunnel-usbmuxconnectbyport/downloads/list) -  Use to forward SSH via USB.
-* [iFunbox](http://www.i-funbox.com) - The File and App Management Tool for iPhone, iPad & iPod Touch.
+## Static Source Code Analysis (Commercial Tools)
 
-#### Reverse Engineering and Static Analysis
-* [otool](http://www.unix.com/man-page/osx/1/otool/) - The otool command displays specified parts of object files or libraries.
-* [Clutch](http://cydia.radare.org/) - Decrypted the application and dump specified bundleID into binary or .ipa file. 
-* [Dumpdecrypted] (https://github.com/stefanesser/dumpdecrypted) - Dumps decrypted mach-o files from encrypted iPhone applications from memory to disk. This tool is necessary for security researchers to be able to look under the hood of encryption.
-* [class-dump](http://stevenygard.com/projects/class-dump/) - A command-line utility for examining the Objective-C runtime information stored in Mach-O files.
-* [Weak Classdump] (https://github.com/limneos/weak_classdump) - A Cycript script that generates a header file for the class passed to the function. Most useful when you cannot classdump or dumpdecrypted , when binaries are encrypted etc.
-* [IDA Pro](https://www.hex-rays.com/products/ida/index.shtml) - IDA is a Windows, Linux or Mac OS X hosted multi-processor disassembler and debugger that offers so many features it is hard to describe them all.
-* [HopperApp](http://hopperapp.com/) - Hopper is a reverse engineering tool for OS X and Linux, that lets you disassemble, decompile and debug your 32/64bits Intel Mac, Linux, Windows and iOS executables.
-* [Radare2](http://www.radare.org/) - Radare2 is a unix-like reverse engineering framework and commandline tools.
-* [iRET](https://www.veracode.com/iret-ios-reverse-engineering-toolkit) - The iOS Reverse Engineering Toolkit is a toolkit designed to automate many of the common tasks associated with iOS penetration testing.
- 
-#### Dynamic and Runtime Analysis
-* [cycript](http://www.cycript.org) - Cycript allows developers to explore and modify running applications on either iOS or Mac OS X using a hybrid of Objective-C++ and JavaScript syntax through an interactive console that features syntax highlighting and tab completion.
-* [iNalyzer](https://appsec-labs.com/cydia/) - AppSec Labs iNalyzer is a framework for manipulating iOS applications, tampering with parameters and method.
-* [idb](https://github.com/dmayer/idb) - idb is a tool to simplify some common tasks for iOS pentesting and research.
-* [snoop-it](http://cydia.radare.org/) - A tool to assist security assessments and dynamic analysis of iOS Apps.
-* [Introspy-iOS](https://github.com/iSECPartners/Introspy-iOS) - Blackbox tool to help understand what an iOS application is doing at runtime and assist in the identification of potential security issues.
-* [gdb](http://cydia.radare.org/) - A tool to perform runtime analysis of IOS applications.
-* [keychaindumper](http://cydia.radare.org/) - A tool to check which keychain items are available to an attacker once an iOS device has been jailbroken.
-* [BinaryCookieReader](http://securitylearn.net/wp-content/uploads/tools/iOS/BinaryCookieReader.py) - A tool to dump all the cookies from the binary Cookies.binarycookies file.
+- Checkmarx: Static Source Code Scanner that also scans source code for Android and iOS - <https://www.checkmarx.com/technology/static-code-analysis-sca/>
+- Fortify: Static source code scanner that also scans source code for Android and iOS - <https://saas.hpe.com/en-us/software/fortify-on-demand/mobile-security>
+- Veracode: Static source code scanner that also scans binaries for Android and iOS - <https://www.veracode.com/products/binary-static-analysis-sast>
 
+## Dynamic and Runtime Analysis
 
+- Frida: A dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers. It works using a client-server model and allows to inject code into running processes on Android and iOS - <https://www.frida.re>
+- Frida CodeShare: A project hosting Frida scripts publicly that can help to bypass client side security controls in mobile apps (e.g. SSL Pinning) - <https://codeshare.frida.re/>
+- NowSecure Workstation (Commercial Tool): Pre-configured hardware and software kit for vulnerability assessment and penetration testing of mobile apps - <https://www.nowsecure.com/solutions/power-tools-for-security-analysts/>
+- r2frida: A project merging the powerful reverse engineering capabilities of radare2 with the dynamic instrumentation toolkit of Frida <https://github.com/nowsecure/r2frida>
 
-#### Bypassing Root Detection and SSL Pinning
-* [SSL Kill Switch 2](https://github.com/nabla-c0d3/ssl-kill-switch2) - Blackbox tool to disable SSL certificate validation - including certificate pinning - within iOS and OS X Apps.
-* [iOS TrustMe](https://github.com/intrepidusgroup/trustme) - Disable certificate trust checks on iOS devices.
-* [Xcon](http://apt.modmyi.com) - A tool for bypassing Jailbreak detection.
-* [tsProtector] (http://cydia.saurik.com/package/kr.typostudio.tsprotector8/) - Another tool for bypassing Jailbreak detection.
+## Reverse Engineering and Static Analysis
 
+- Binary ninja: A multi-platform software disassembler that can be used against several executable file formats. It is capable of IR (intermediate representation) lifting - <https://binary.ninja/>
+- Ghidra: An open source software reverse engineering suite of tools developed by the National Security Agency (NSA). Its main capabilities include disassembly, assembly, decompilation, graphing, and scripting - <https://ghidra-sre.org/>
+- HopperApp (Commercial Tool): A reverse engineering tool for macOS and Linux used to disassemble, decompile and debug 32/64bits Intel Mac, Linux, Windows and iOS executables - <https://www.hopperapp.com/>
+- IDA Pro (Commercial Tool): A Windows, Linux or macOS hosted multi-processor disassembler and debugger - <https://www.hex-rays.com/products/ida/index.shtml>
+- radare2: radare2 is a unix-like reverse engineering framework and command line tools - <https://www.radare.org/r/>
+- Retargetable Decompiler (RetDec): An open source machine-code decompiler based on LLVM. It can be used as a standalone program or as a plugin for IDA Pro or radare2 - <https://retdec.com/>
 
+## Tools for Android
 
-## Tools for Network Interception 
-* [Tcpdump](http://www.androidtcpdump.com) - A command line packet capture utility.
-* [Wireshark](https://www.wireshark.org/download.html) - An open-source packet analyzer.
-* [Canape](http://www.contextis.com/services/research/canape/) - A network testing tool for arbitrary protocols.
-* [Mallory](https://intrepidusgroup.com/insight/mallory/) - A Man in The Middle Tool (MiTM) that use to monitor and manipulate traffic on mobile devices and applications.
-* [Burp Suite](https://portswigger.net/burp/download.html) - Burp Suite is an integrated platform for performing security testing of applications. 
-* [Charles Proxy](http://www.charlesproxy.com) - HTTP proxy / HTTP monitor / Reverse Proxy that enables a developer to view all of the HTTP and SSL / HTTPS traffic between their machine and the Internet.
-* [OWASP ZAP](https://github.com/zaproxy/zaproxy) - The OWASP Zed Attack Proxy (ZAP) is a free security tools which can help you automatically find security vulnerabilities in your web applications and web services.
-* [Fiddler](http://www.telerik.com/fiddler) - Fiddler is an HTTP debugging proxy server application which can captures HTTP and HTTPS traffic and logs it for the user to review. Fiddler can also be used to modify HTTP traffic for troubleshooting purposes as it is being sent or received.
+### Reverse Engineering and Static Analysis
 
-## IDE 
-* [IntelliJ](https://www.jetbrains.com/idea/download/) - IntelliJ IDEA is a Java integrated development environment (IDE) for developing computer software.
-* [Eclipse](https://eclipse.org/) - Eclipse is an integrated development environment (IDE) used in computer programming, and is the most widely used Java IDE.
+- Androguard: A python based tool, which can use to disassemble and decompile Android apps - <https://github.com/androguard/androguard>
+- Android Backup Extractor: Utility to extract and repack Android backups created with adb backup (ICS+). Largely based on BackupManagerService.java from AOSP - <https://github.com/nelenkov/android-backup-extractor>
+- Android Debug Bridge (adb): A versatile command line tool used to communicate with an emulator instance or connected Android device - <https://developer.android.com/studio/command-line/adb.html>
+- apktool: A tool for reverse engineering 3rd party, closed, binary Android apps. It can decode resources to nearly original form and rebuild them after making some modifications - <https://github.com/iBotPeaches/Apktool>
+- android-classyshark: A standalone binary inspection tool for Android developers - <https://github.com/google/android-classyshark>
+- ByteCodeViewer: Java 8 Jar and Android APK Reverse Engineering Suite (e.g. Decompiler, Editor and Debugger) - <https://bytecodeviewer.com/>
+- ClassNameDeobfuscator: Simple script to parse through the .smali files produced by apktool and extract the .source annotation lines - <https://github.com/HamiltonianCycle/ClassNameDeobfuscator>
+- FindSecurityBugs: FindSecurityBugs is a extension for SpotBugs which includes security rules for Java applications - <https://find-sec-bugs.github.io>
+- Jadx (Dex to Java Decompiler): Command line and GUI tools for producing Java source code from Android DEX and APK files - <https://github.com/skylot/jadx>
+- Oat2dex: A tool for converting .oat file to .dex files - <https://github.com/testwhat/SmaliEx>
+- Qark: A tool designed to look for several security related Android application vulnerabilities, either in source code or packaged APKs - <https://github.com/linkedin/qark>
+- Sign: A Java JAR executable (Sign.jar) which automatically signs an APK with the Android test certificate - <https://github.com/appium/sign>
+- Simplify: A tool for de-obfuscating android package into Classes.dex which can be use Dex2jar and JD-GUI to extract contents of DEX file - <https://github.com/CalebFenton/simplify>
+- SUPER: A command-line application that can be used in Windows, macOS and Linux, that analyzes APK files in search for vulnerabilities - <https://github.com/SUPERAndroidAnalyzer/super>
+- SpotBugs: Static analysis tool for Java - <https://spotbugs.github.io/>
+
+### Dynamic and Runtime Analysis
+
+- Android Tcpdump: A command line packet capture utility for Android - <https://www.androidtcpdump.com>
+- Drozer: A tool that allows to search for security vulnerabilities in apps and devices by assuming the role of an app and interacting with the Dalvik VM, other apps' IPC endpoints and the underlying OS - <https://www.mwrinfosecurity.com/products/drozer/>
+- Inspeckage: A tool developed to offer dynamic analysis of Android apps. By applying hooks to functions of the Android API, Inspeckage helps to understand what an Android application is doing at runtime - <https://github.com/ac-pm/Inspeckage>
+- jdb: A Java Debugger which allows to set breakpoints and print application variables. jdb uses the JDWP protocol - <https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html>
+- logcat-color: A colorful and highly configurable alternative to the adb logcat command from the Android SDK - <https://github.com/marshall/logcat-color>
+- VirtualHook: A hooking tool for applications on Android ART (>=5.0). It's based on VirtualApp and therefore does not require root permission to inject hooks - <https://github.com/rk700/VirtualHook>
+- Xposed Framework: A framework that allows to modify the system or application aspect and behavior at runtime, without modifying any Android application package (APK) or re-flashing - <https://forum.xda-developers.com/xposed/xposed-installer-versions-changelog-t2714053>
+
+### Bypassing Root Detection and Certificate Pinning
+
+- Android SSL Trust Killer (Cydia Substrate Module): Blackbox tool to bypass SSL certificate pinning for most applications running on a device - <https://github.com/iSECPartners/Android-SSL-TrustKiller>
+- JustTrustMe (Xposed Module): An Xposed Module to bypass SSL certificate pinning - <https://github.com/Fuzion24/JustTrustMe>
+- RootCloak Plus (Cydia Substrate Module): Patch root checking for commonly known indications of root - <https://github.com/devadvance/rootcloakplus>
+- SSLUnpinning (Xposed Module): An Xposed Module to bypass SSL certificate pinning - <https://github.com/ac-pm/SSLUnpinning_Xposed>
+
+## Tools for iOS
+
+### Access Filesystem on iDevice
+
+- iFunbox: The File and App Management Tool for iPhone, iPad & iPod Touch - <http://www.i-funbox.com>
+- iProxy: A tool used to connect via SSH to a jailbroken iPhone via USB - <https://github.com/tcurdt/iProxy>
+- itunnel: A tool used to forward SSH via USB - <https://code.google.com/p/iphonetunnel-usbmuxconnectbyport/downloads/list>
+
+Once you are able to SSH into your jailbroken iPhone you can use an FTP client like the following to browse the file system:
+
+- Cyberduck: Libre FTP, SFTP, WebDAV, S3, Azure & OpenStack Swift browser for Mac and Windows - <https://cyberduck.io>
+- FileZilla: A solution supporting FTP, SFTP, and FTPS (FTP over SSL/TLS) - <https://filezilla-project.org/download.php?show_all=1>
+
+### Reverse Engineering and Static Analysis
+
+- class-dump: A command-line utility for examining the Objective-C runtime information stored in Mach-O files - <http://stevenygard.com/projects/class-dump/>
+- Clutch: Decrypt the application and dump specified bundleID into binary or IPA file - <https://github.com/KJCracks/Clutch>
+- Dumpdecrypted: Dumps decrypted mach-o files from encrypted iPhone applications from memory to disk - <https://github.com/stefanesser/dumpdecrypted>
+- hopperscripts: Collection of scripts that can be used to demangle Swift function names in HopperApp - <https://github.com/Januzellij/hopperscripts>
+- otool: A tool that displays specified parts of object files or libraries - <https://www.unix.com/man-page/osx/1/otool/>
+- Plutil: A program that can convert .plist files between a binary version and an XML version - <https://www.theiphonewiki.com/wiki/Plutil>
+- Weak Classdump: A Cycript script that generates a header file for the class passed to the function. Most useful when classdump or dumpdecrypted cannot be used, when binaries are encrypted etc - <https://github.com/limneos/weak_classdump>
+
+### Dynamic and Runtime Analysis
+
+- bfinject: A tool that loads arbitrary dylibs into running App Store apps. It has built-in support for decrypting App Store apps, and comes bundled with iSpy and Cycript - <https://github.com/BishopFox/bfinject>
+- BinaryCookieReader: A tool to dump all the cookies from the binary Cookies.binarycookies file - <https://securitylearn.net/wp-content/uploads/tools/iOS/BinaryCookieReader.py>
+- Burp Suite Mobile Assistant: A tool to bypass certificate pinning and is able to inject into apps - <https://portswigger.net/burp/help/mobile_testing_using_mobile_assistant.html>
+- Cycript: A tool that allows developers to explore and modify running applications on either iOS or macOS using a hybrid of Objective-C and JavaScript syntax through an interactive console that features syntax highlighting and tab completion - <http://www.cycript.org>
+- Frida-cycript: A fork of Cycript including a brand new runtime called Mjølner powered by Frida. This enables frida-cycript to run on all the platforms and architectures maintained by frida-core - <https://github.com/nowsecure/frida-cycript>
+- Fridpa: An automated wrapper script for patching iOS applications (IPA files) and work on non-jailbroken device - <https://github.com/tanprathan/Fridpa>
+- gdb: A tool to perform runtime analysis of iOS applications - <https://cydia.radare.org/pool/main/g/gdb/>
+- idb: A tool to simplify some common tasks for iOS pentesting and research - <https://github.com/dmayer/idb>
+- Introspy-iOS: Blackbox tool to help understand what an iOS application is doing at runtime and assist in the identification of potential security issues - <https://github.com/iSECPartners/Introspy-iOS>
+- keychaindumper: A tool to check which keychain items are available to an attacker once an iOS device has been jailbroken - <https://github.com/ptoomey3/Keychain-Dumper>
+- lldb: A debugger by Apple’s Xcode used for debugging iOS applications - <https://lldb.llvm.org/>
+- Passionfruit: Simple iOS app blackbox assessment tool with Fully web based GUI. Powered by frida.re and vuejs - <https://github.com/chaitin/passionfruit>
+
+### Bypassing Jailbreak Detection and SSL Pinning
+
+- SSL Kill Switch 2: Blackbox tool to disable SSL certificate validation - including certificate pinning - within iOS and macOS Apps - <https://github.com/nabla-c0d3/ssl-kill-switch2>
+- tsProtector: A tool for bypassing Jailbreak detection - <http://cydia.saurik.com/package/kr.typostudio.tsprotector8>
+- Xcon: A tool for bypassing Jailbreak detection - <http://cydia.saurik.com/package/com.n00neimp0rtant.xcon/>
+
+## Tools for Network Interception and Monitoring
+
+- bettercap: A powerful framework which aims to offer to security researchers and reverse engineers an easy to use, all-in-one solution for Wi-Fi, Bluetooth Low Energy, wireless HID hijacking and Ethernet networks reconnaissance and MITM attacks - <https://www.bettercap.org/>
+- Canape: A network testing tool for arbitrary protocols - <https://github.com/ctxis/canape>
+- Mallory: A Man in The Middle Tool (MiTM) that is used to monitor and manipulate traffic on mobile devices and applications - <https://github.com/intrepidusgroup/mallory>
+- MITM Relay: A script to intercept and modify non-HTTP protocols through Burp and others with support for SSL and STARTTLS interception - <https://github.com/jrmdev/mitm_relay>
+- tcpdump: A command line packet capture utility - <https://www.tcpdump.org/>
+- Wireshark: An open-source packet analyzer - <https://www.wireshark.org/download.html>
+
+## Interception Proxies
+
+- Burp Suite: An integrated platform for performing security testing of applications - <https://portswigger.net/burp/download.html>
+- Charles Proxy: HTTP proxy / HTTP monitor / Reverse Proxy that enables a developer to view all of the HTTP and SSL / HTTPS traffic between their host computer and the Internet - <https://www.charlesproxy.com>
+- Fiddler: An HTTP debugging proxy server application which captures HTTP and HTTPS traffic and logs it for the user to review - <https://www.telerik.com/fiddler>
+- OWASP Zed Attack Proxy (ZAP): A free security tool which helps to automatically find security vulnerabilities in web applications and web services - <https://github.com/zaproxy/zaproxy>
+- Proxydroid: Global Proxy App for Android System - <https://github.com/madeye/proxydroid>
+
+## IDEs
+
+- Android Studio: The official IDE for Google's Android operating system, built on JetBrains' IntelliJ IDEA software and designed specifically for Android development - <https://developer.android.com/studio/index.html>
+- IntelliJ IDEA: A Java IDE for developing computer software - <https://www.jetbrains.com/idea/download/>
+- Eclipse: Eclipse is an IDE used in computer programming, and is the most widely used Java IDE - <https://eclipse.org/>
+- Xcode: The official IDE to create apps for iOS, watchOS, tvOS and macOS. It's only available for macOS - <https://developer.apple.com/xcode/>
+
+## Vulnerable applications
+
+The applications listed below can be used as training materials. Note: only the MSTG apps and Crackmes are tested and maintained by the MSTG project.
+
+### Android
+
+- Crackmes: A set of apps to test your Android application hacking skills - <https://github.com/OWASP/owasp-mstg/tree/master/Crackmes>
+- AndroGoat: An open source vulnerable/insecure app using Kotlin. This app has a wide range of vulnerabilities related to certificate pinning, custom URL schemes, Android Network Security Configuration, WebViews, root detection and over 20 other vulnerabilities - <https://github.com/satishpatnayak/AndroGoat>
+- DVHMA: A hybrid mobile app (for Android) that intentionally contains vulnerabilities - <https://github.com/logicalhacking/DVHMA>
+- Digitalbank: A vulnerable app created in 2015, which can be used on older Android platforms - <https://github.com/CyberScions/Digitalbank>
+- DIVA Android: An app intentionally designed to be insecure which has received updates in 2016 and contains 13 different challenges - <https://github.com/payatu/diva-android>
+- DodoVulnerableBank: An insecure Android app from 2015 - <https://github.com/CSPF-Founder/DodoVulnerableBank>
+- InsecureBankv2: A vulnerable Android app made for security enthusiasts and developers to learn the Android insecurities by testing a vulnerable application. It has been updated in 2018 and contains a lot of vulnerabilities - <https://github.com/dineshshetty/Android-InsecureBankv2>
+- MSTG Android app: Java - A vulnerable Android app with vulnerabilities similar to the test cases described in this document - <https://github.com/OWASP/MSTG-Hacking-Playground/tree/master/Android/MSTG-Android-Java-App>
+- MSTG Android app: Kotlin - A vulnerable Android app with vulnerabilities similar to the test cases described in this document - <https://github.com/OWASP/MSTG-Hacking-Playground/tree/master/Android/MSTG-Android-Kotlin-App>
+
+### iOS
+
+- Crackmes: A set of applications to test your iOS application hacking skills - <https://github.com/OWASP/owasp-mstg/tree/master/Crackmes>
+- Myriam: A vulnerable iOS app with iOS security challenges - <https://github.com/GeoSn0w/Myriam>
+- DVIA: A vulnerable iOS app written in Objective-C which provides a platform to mobile security enthusiasts/professionals or students to test their iOS penetration testing skills - <http://damnvulnerableiosapp.com/>
+- DVIA-v2: A vulnerable iOS app, written in Swift with over 15 vulnerabilities - <https://github.com/prateek147/DVIA-v2>
+- iGoat: An iOS Objective-C app serving as a learning tool for iOS developers (iPhone, iPad, etc.) and mobile app pentesters. It was inspired by the WebGoat project, and has a similar conceptual flow to it - <https://github.com/owasp/igoat>
+- iGoat-Swift: A Swift version of original iGoat project - <https://github.com/owasp/igoat-swift>
+- UnSAFE Bank: UnSAFE Bank is a core virtual banking application designed with the aim to incorporate the cybersecurity risks and various test cases such that newbie, developers, and security analysts can learn, hack and improvise their vulnerability assessment and penetration testing skills. - <https://github.com/lucideus-repo/UnSAFE_Bank>
